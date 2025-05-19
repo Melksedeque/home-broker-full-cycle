@@ -5,8 +5,8 @@ import { AssetsModule } from './assets/assets.module';
 
 @Module({
   // Decorator @Module() é usado para definir as metadata do módulo.
-  imports: [AssetsModule],
   controllers: [AppController],
   providers: [AppService],
+  imports: [AssetsModule],
 })
 export class AppModule {}

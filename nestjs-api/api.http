@@ -1,13 +1,23 @@
 POST http://localhost:3000/assets
 Content-Type: application/json
 
-{
+[{
   "name": "Amazon",
   "symbol": "AMZN",
   "price": 100,
   "image": "amzn.png"
-}
+},
+{
+  "name": "Meta",
+  "symbol": "META",
+  "price": 100,
+  "image": "meta.png"
+}]
 
 ###
 
 GET  http://localhost:3000/assets
+
+###
+
+GET  http://localhost:3000/assets/{symbol}

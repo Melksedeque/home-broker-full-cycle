@@ -17,9 +17,9 @@ export class AssetsController {
     return this.assetsService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.assetsService.findOne(+id);
+  @Get(':symbol')
+  findOne(@Param('symbol') symbol: string) {
+    return this.assetsService.findOne(symbol);
   }
 
   @Patch(':id')

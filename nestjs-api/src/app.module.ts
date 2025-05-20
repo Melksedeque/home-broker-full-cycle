@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { AssetsModule } from './assets/assets.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { WalletsModule } from './wallets/wallets.module';
+import { OrdersModule } from './orders/orders.module';
 
 @Module({
   // Decorator @Module() é usado para definir as metadata do módulo.
@@ -13,6 +14,7 @@ import { WalletsModule } from './wallets/wallets.module';
     ),
     AssetsModule,
     WalletsModule,
+    OrdersModule,
   ],
   controllers: [AppController],
   providers: [AppService],

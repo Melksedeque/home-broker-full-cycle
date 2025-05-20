@@ -1,16 +1,28 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { HydratedDocument } from 'mongoose';
+import mongoose, { HydratedDocument } from 'mongoose';
+import { Wallet, WalletDocument } from './wallet.entity';
+import { Asset, AssetDocument } from '../../assets/entities/asset.entity';
 
-export type WalletDocument = HydratedDocument<Wallet>;
+export type WalletAssetDocument = HydratedDocument<WalletAsset>;
 
 @Schema({ timestamps: true })
-export class Wallet {
+export class WalletAsset {
   @Prop({ default: () => crypto.randomUUID() })
   _id: string;
-  @Prop()
-  amount: number;
+
+  @Prop({ type: mongoose.Schema.Types.Int32 })
+  shares: number;
+
+  @Prop({ type: String, ref: Wallet.name })
+  wallet: WalletDocument | string;
+
+  @Prop({ type: String, ref: Asset.name })
+  asset: AssetDocument | string;
+
   createdAt!: Date;
   updatedAt!: Date;
 }
 
-export const WalletSchema = SchemaFactory.createForClass(Wallet);
+export const WalletAssetSchema = SchemaFactory.createForClass(WalletAsset);
+
+WalletAssetSchema.index({ wallet: 1, asset: 1 }, { unique: true });

@@ -39,4 +39,16 @@ export class WalletsController {
   remove(@Param('id') id: string) {
     return this.walletsService.remove(+id);
   }
+
+  @Post(':id/assets') // /wallets/uuid/assets
+  createWalletAsset(
+    @Param('id') id: string,
+    @Body() body: { assetId: string; shares: number },
+  ) {
+    return this.walletsService.createWalletAsset({
+      walleltId: id,
+      assetId: body.assetId,
+      shares: body.shares,
+    });
+  }
 }

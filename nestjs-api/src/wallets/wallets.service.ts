@@ -23,7 +23,14 @@ export class WalletsService {
   }
 
   findOne(id: string) {
-    return this.walletSchema.findById(id);
+    return this.walletSchema.findById(id).populate([
+      {
+        path: 'assets',
+        populate: {
+          path: ['asset'],
+        },
+      }
+    ]);
   }
 
   async createWalletAsset(data: {

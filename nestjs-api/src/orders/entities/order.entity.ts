@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import mongoose, { HydratedDocument } from 'mongoose';
+import crypto from 'crypto';
 import { Asset, AssetDocument } from '../../assets/entities/asset.entity';
 import { Wallet, WalletDocument } from 'src/wallets/entities/wallet.entity';
 

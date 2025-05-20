@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { CreateAssetDto } from './dto/create-asset.dto';
-import { UpdateAssetDto } from './dto/update-asset.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { Asset } from './entities/asset.entity';
 import { Model } from 'mongoose';
@@ -19,13 +18,5 @@ export class AssetsService {
 
   findOne(symbol: string) {
     return this.assetSchema.findOne({ symbol });
-  }
-
-  update(id: number, updateAssetDto: UpdateAssetDto) {
-    return `This action updates a #${id} asset`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} asset`;
   }
 }
